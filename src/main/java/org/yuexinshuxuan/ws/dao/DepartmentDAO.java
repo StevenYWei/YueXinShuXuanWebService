@@ -1,8 +1,8 @@
-package dao;
+package org.yuexinshuxuan.ws.dao;
 
 import java.util.List;
 
-import entity.Department;
+import org.yuexinshuxuan.ws.entity.Department;
 
 public interface DepartmentDAO {
 

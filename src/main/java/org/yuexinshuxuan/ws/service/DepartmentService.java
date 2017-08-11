@@ -1,8 +1,8 @@
-package service;
+package org.yuexinshuxuan.ws.service;
 
 import java.util.List;
 
-import entity.Department;
+import org.yuexinshuxuan.ws.entity.Department;
 
 public interface DepartmentService {
 

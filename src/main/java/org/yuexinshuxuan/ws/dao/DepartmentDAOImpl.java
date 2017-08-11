@@ -1,4 +1,4 @@
-package dao;
+package org.yuexinshuxuan.ws.dao;
 
 import java.util.List;
 
@@ -8,8 +8,7 @@ import javax.persistence.Query;
 import javax.persistence.Entity;
 
 import org.springframework.stereotype.Repository;
-
-import entity.Department;
+import org.yuexinshuxuan.ws.entity.Department;
 
 @Repository
 public class DepartmentDAOImpl implements DepartmentDAO {
@@ -30,9 +29,9 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	}
 
 	@Override
-	public Department findDepartmentById(int deptId) {
-		Query query = em.createQuery("select d from Department d where d.dept_id =:deptId", Department.class);
-		return (Department) query.setParameter("deptId", deptId).getSingleResult();
+	public Department findDepartmentById(int deptNo) {
+		Query query = em.createQuery("select d from Department d where d.deptNo =:deptNo", Department.class);
+		return (Department) query.setParameter("deptNo", deptNo).getSingleResult();
 	}
 
 }

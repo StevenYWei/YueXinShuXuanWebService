@@ -1,12 +1,11 @@
-package controller;
+package org.yuexinshuxuan.ws.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import service.DepartmentService;
-import service.DepartmentServiceImpl;
+import org.yuexinshuxuan.ws.service.DepartmentService;
+import org.yuexinshuxuan.ws.service.DepartmentServiceImpl;
 
 @RestController
 public class DeptController {

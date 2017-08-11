@@ -1,4 +1,4 @@
-package app;
+package org.yuexinshuxuan.ws;
 
 import java.util.Properties;
 
@@ -15,7 +15,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @SpringBootApplication
-@ComponentScan({"controller","dao","entity","service"})
+//@ComponentScan({"controller","dao","entity","service"})
 public class AppStarter {
 
 	public static void main(String[] args) {
@@ -26,9 +26,10 @@ public class AppStarter {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://shuxuan.ccjzcngskpro.ap-northeast-1.rds.amazonaws.com");
+		dataSource.setUrl("jdbc:mysql://shuxuan.ccjzcngskpro.ap-northeast-1.rds.amazonaws.com:3306/shuxuan");
 		dataSource.setUsername("shuxuanadmin");
 		dataSource.setPassword("shuxuanadmin");
+		dataSource.setSchema("shuxuan");
 		return dataSource;
 	}
 
@@ -44,6 +45,7 @@ public class AppStarter {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
+	
 	Properties additionalProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");

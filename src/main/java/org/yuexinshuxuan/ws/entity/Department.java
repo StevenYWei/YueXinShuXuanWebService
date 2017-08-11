@@ -1,4 +1,4 @@
-package entity;
+package org.yuexinshuxuan.ws.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,8 @@ public class Department {
 	private int deptNo;
 	@Column(name = "dept_name", length = 30, nullable = false)
 	private String deptName;
+	
+	public Department() {}
 	
 	public int getDeptNo() {
 		return deptNo;

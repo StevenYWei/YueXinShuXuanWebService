@@ -1,12 +1,11 @@
-package service;
+package org.yuexinshuxuan.ws.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import dao.DepartmentDAO;
-import entity.Department;
+import org.yuexinshuxuan.ws.dao.DepartmentDAO;
+import org.yuexinshuxuan.ws.entity.Department;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
