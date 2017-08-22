@@ -3,10 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.yuexinshuxuan</groupId>
 	<artifactId>WebApplication</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<springboot.version>1.5.1.RELEASE</springboot.version>
+		<zxing.version>3.3.0</zxing.version>
 	</properties>
 
 	<parent>
@@ -14,6 +17,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.1.RELEASE</version>
 	</parent>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -45,6 +49,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>${zxing.version}</version>
 		</dependency>
 	</dependencies>
 
