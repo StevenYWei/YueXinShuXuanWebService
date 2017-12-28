@@ -15,38 +15,47 @@ public class UsersDAOImpl implements UsersDAO {
 	EntityManager em;
 	
 	@Override
+	@Transactional
 	public User getUserById(int userId) {
-		Query query = em.createQuery("select u from User u where u.user_id = :userId", User.class);
-		return (User) query.setParameter("userId", userId).getSingleResult();
-//		return em.find(User.class, userId);
+		return em.find(User.class, userId);
 	}
 
 	@Override
 	@Transactional
 	public User addUser(User userInfo) {
-//		em.find(User.class, userInfo.getUserId());
 		em.persist(userInfo);
 		em.flush();
 		return em.find(User.class, userInfo.getUserId());
 	}
 
 	@Override
-	public void deleteUserById(String userId) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public int deleteUserById(int userId) {
+		User userToBeDeleted = em.find(User.class, userId);
+		if(userToBeDeleted == null) {
+			return 0;
+		}
+		em.remove(userToBeDeleted);
+		return 1;
+	}
+
+	@Override
+	@Transactional
+	public int updateUserCode(int userId, String userCode) {
+		User userToBeUpdated = em.find(User.class, userId);
+		userToBeUpdated.setUserCode(userCode);
+		em.merge(userToBeUpdated);
+		return 1;
 
 	}
 
 	@Override
-	public void updateUserCode(String userId, String userCode) {
-		Query query = em.createQuery("update User u set u.userCode = :userCode where u.user_id = :userId", User.class);
-		query.executeUpdate();
-
-	}
-
-	@Override
-	public void updateUserActiveFlag(String userId, String activeFlag) {
-		Query query = em.createQuery("update User u set u.activeFlag = :activeFlag where u.user_id = :userId", User.class);
-		query.executeUpdate();
+	@Transactional
+	public int updateUserActiveFlag(int userId, String activeFlag) {
+		User userToBeUpdated = em.find(User.class, userId);
+		userToBeUpdated.setActiveFlag(activeFlag);
+		em.merge(userToBeUpdated);
+		return 1;
 
 	}
 

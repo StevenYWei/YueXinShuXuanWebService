@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -23,10 +24,8 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 
-	
 	@Column(name = "user_nm", nullable = false)
 	private String userName;
-	
 	
 	@Column(name = "user_pw", nullable = false)
 	private String userPassword;
@@ -34,75 +33,48 @@ public class User implements Serializable {
 	@Column(name = "user_cd", nullable = true)
 	private String userCode;
 	
-
 	@Column(name = "active_fl", nullable = true)
 	private String activeFlag;
 
-	
 	@Column(name = "shpn_cart_id", nullable = true)
 	private Integer shoppingCartId;
-	
 	
 	@Column(name = "first_nm", nullable = true)
 	private String firstName;
 
-	
-	
 	@Column(name = "middle_nm", nullable = true)
 	private String middleName;
 
-	
-	
 	@Column(name = "last_nm", nullable = true)
 	private String lastName;
 	
-	
-	
 	@Column(name = "email_addr", nullable = true)
 	private String email;
-
-	
 	
 	@Column(name = "phone_nb", nullable = true)
 	private String phoneNumber;
-
-	
 	
 	@Column(name = "dob", nullable = true)
 	private Calendar DateOfBirth;
-
-	
 	
 	@Column(name = "addr1", nullable = true)
 	private String address1;
-
-	
 	
 	@Column(name = "addr2", nullable = true)
 	private String address2;
-
-	
 	
 	@Column(name = "city", nullable = true)
 	private String city;
 
-	
-	
 	@Column(name = "state", nullable = true)
 	private String state;
-
-	
 	
 	@Column(name = "country", nullable = true)
 	private String country;
 
-	
-	
 	@Column(name = "zip", nullable = true)
 	private String zip;
 
-	
-	
 	@Column(name = "user_creat_dt", nullable = true)
 	private Calendar createDate;
 
@@ -147,7 +119,7 @@ public class User implements Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	public int getShoppingCartId() {
+	public Integer getShoppingCartId() {
 		return shoppingCartId;
 	}
 

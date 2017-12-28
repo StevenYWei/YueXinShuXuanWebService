@@ -8,10 +8,10 @@ public interface UsersDAO {
 	
 	public User addUser(User userInfo);
 	
-	public void deleteUserById(String userId);
+	public int deleteUserById(int userId);
 	
-	public void updateUserCode(String userId, String userCode);
+	public int updateUserCode(int userId, String userCode);
 	
-	public void updateUserActiveFlag(String userId, String activeFlag);
+	public int updateUserActiveFlag(int userId, String activeFlag);
 	
 }
