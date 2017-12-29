@@ -25,19 +25,6 @@ CREATE TABLE book (
 
 -- --------------------------------------------------------
 
--- Create shopping cart table
-DROP TABLE IF EXISTS shnp_cart;
-CREATE TABLE shnp_cart (
-    shpn_cart_id int auto_increment primary key,
-    book_id int,
-    stts_cd varchar(15),
-    foreign key (book_id)
-        references book (book_id)
-        on update set null on delete cascade
-);
-
--- ---------------------------------------------------------
-
 
 -- Create user code lookup table
 DROP TABLE IF EXISTS user_cd_lk;
@@ -70,8 +57,26 @@ CREATE TABLE users (
     user_creat_dt timestamp,
     foreign key (user_cd)
         references user_cd_lk (user_cd)
-        on update set null on delete cascade
+        on delete set null on update cascade
 );
+
+-- ---------------------------------------------------------
+
+-- Create shopping cart table
+DROP TABLE IF EXISTS shpn_cart;
+CREATE TABLE shpn_cart (
+    shpn_cart_id int,
+    book_id int,
+    stts_cd varchar(15),
+    primary key (shpn_cart_id , book_id),
+    foreign key (shpn_cart_id)
+        references users (user_id)
+        on update cascade,
+    foreign key (book_id)
+        references book (book_id)
+		on update cascade
+);
+
 
 -- ---------------------------------------------------------
 
@@ -89,7 +94,7 @@ CREATE TABLE users (
 
 -- Create item code lookup table
 -- DROP TABLE IF EXISTS item_cd_lk;
--- CREATE TABLE item_cd_lk (
+-- CREATE TusersABLE item_cd_lk (
 --     item_cd varchar(10),
 --     code_desc varchar(100)
 -- );
@@ -100,10 +105,30 @@ SET FOREIGN_KEY_CHECKS=1;
 
 show tables;
 insert into book_category_cd_lk values('HIST', 'Books related to history');
+insert into book_category_cd_lk values('ORG', 'Books related to organization');
+
 insert into user_cd_lk values('ADM','Administrator of the application'),('OPR','Operator of the application'),('MBR','Registered member of Yue Xin SHu Xuan'),('GST','Guest of the application'),('OTR','Other user type');
-insert into users(user_nm, user_pw, user_cd, active_fl, first_nm, user_creat_dt) values('yuming.wei','123','ADM','Y','Yuming',now());
-insert into users(user_nm, user_pw, user_cd, active_fl, first_nm, user_creat_dt) values('ying.yu','123','ADM','Y','Ying',now());
+
+insert into users(user_nm, user_pw, user_cd, active_fl, first_nm, user_creat_dt) values('yuming','123','ADM','Y','Yuming',now());
+insert into users(user_nm, user_pw, user_cd, active_fl, first_nm, user_creat_dt) values('ying','123','ADM','Y','Ying',now());
+
+insert into book(category_cd, book_name, author, price) values('ORG', 'YueXinShuXuan', 'Yu Ying', 1000000000);
+insert into book(category_cd, book_name, author, price) values('HIST', 'YueXinShuXuanHIST', 'Yuming Wei', 1000000000);
+
+
+-- ----- Util SQL ------
 
 -- use yuexinshuxuan;
 -- select  concat('private ', concat(column_type, concat(' ', concat(column_name, ';')))) from information_schema.columns where table_name='users'
 
+-- SHOW ENGINE INNODB STATUS;
+
+-- Select column as defition
+-- select 
+--     concat('private ',
+--             concat(column_type,
+--                     concat(' ', concat(column_name, ';')))) as definition
+-- from
+--     information_schema.columns
+-- where
+--     table_name = 'user_cd_lk';

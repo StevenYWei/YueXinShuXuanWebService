@@ -4,11 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,39 +19,49 @@ public class ShoppingCart implements Serializable {
 
 	@Id
 	@Column(name = "shpn_cart_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer shoppingCartId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@Id
 	@Column(name = "book_id", nullable = false)
 	private Integer bookId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
 	@Column(name = "stts_cd", nullable = false)
 	private String sttsCode;
 
-	protected Integer getShoppingCartId() {
+	public Integer getShoppingCartId() {
 		return shoppingCartId;
 	}
 
-	protected void setShoppingCartId(Integer shoppingCartId) {
+	public void setShoppingCartId(Integer shoppingCartId) {
 		this.shoppingCartId = shoppingCartId;
 	}
 
-	protected Integer getBookId() {
+	public Integer getBookId() {
 		return bookId;
 	}
 
-	protected void setBookId(Integer bookId) {
+	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
 	}
 
-	protected String getSttsCode() {
+	public String getSttsCode() {
 		return sttsCode;
 	}
 
-	protected void setSttsCode(String sttsCode) {
+	public void setSttsCode(String sttsCode) {
 		this.sttsCode = sttsCode;
 	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+	
+	
 
 }
