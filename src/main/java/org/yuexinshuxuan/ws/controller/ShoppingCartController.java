@@ -29,11 +29,6 @@ public class ShoppingCartController {
 	public List<ShoppingCart> getShoppingCartByUser(@PathVariable Integer userId) {
 		return shoppingCartService.getShopingCartByUserId(userId);
 	}
-
-//	@GetMapping("/addToCart")
-//	public void addToCart(@RequestParam(value = "userId") Integer userId, @RequestParam(value = "bookId") Integer bookId) {
-//		shoppingCartService.addToCart(userId, bookId);
-//	}
 	
 	@PostMapping("/addToCart")
 	public void addToCart(@RequestBody ShoppingCart shoppingCart) {

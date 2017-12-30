@@ -1,5 +1,6 @@
 package org.yuexinshuxuan.ws.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -11,101 +12,102 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book implements Serializable{
 	
+	private static final long serialVersionUID = 2258814395842174475L;
+
 	public Book() {}
 	
 	@Id
 	@Column(name = "book_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer book_id;
+	private Integer bookId;
 	
 	@Column(name = "category_cd")
-	private String category_cd;
+	private String categoryCode;
 	
 	@Column(name = "book_name")
-	private String book_name;
+	private String bookName;
 	
 	@Column(name = "book_time")
-	private Calendar book_time;
+	private Calendar bookTime;
 
 	@Column(name = "author")
 	private String author;
 	
 	@Column(name = "book_desc")
-	private String book_desc;
+	private String bookDescription;
 	
 	@Column(name = "price")
 	private double price;
 	
 	@Column(name = "pic")
 	private Byte[] pic;
-
 	
-	protected Integer getBook_id() {
-		return book_id;
+
+	public Integer getBookId() {
+		return bookId;
 	}
 
-	protected void setBook_id(Integer book_id) {
-		this.book_id = book_id;
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
 	}
 
-	protected String getCategory_cd() {
-		return category_cd;
+	public String getCategoryCode() {
+		return categoryCode;
 	}
 
-	protected void setCategory_cd(String category_cd) {
-		this.category_cd = category_cd;
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
 	}
 
-	protected String getBook_name() {
-		return book_name;
+	public String getBookName() {
+		return bookName;
 	}
 
-	protected void setBook_name(String book_name) {
-		this.book_name = book_name;
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
 
-	protected Calendar getBook_time() {
-		return book_time;
+	public Calendar getBookTime() {
+		return bookTime;
 	}
 
-	protected void setBook_time(Calendar book_time) {
-		this.book_time = book_time;
+	public void setBookTime(Calendar bookTime) {
+		this.bookTime = bookTime;
 	}
 
-	protected String getAuthor() {
+	public String getAuthor() {
 		return author;
 	}
 
-	protected void setAuthor(String author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	protected String getBook_desc() {
-		return book_desc;
+	public String getBookDescription() {
+		return bookDescription;
 	}
 
-	protected void setBook_desc(String book_desc) {
-		this.book_desc = book_desc;
+	public void setBookDescription(String bookDescription) {
+		this.bookDescription = bookDescription;
 	}
 
-	protected double getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	protected void setPrice(double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
-	protected Byte[] getPic() {
+	public Byte[] getPic() {
 		return pic;
 	}
 
-	protected void setPic(Byte[] pic) {
+	public void setPic(Byte[] pic) {
 		this.pic = pic;
 	}
-
 	
 	
 }
