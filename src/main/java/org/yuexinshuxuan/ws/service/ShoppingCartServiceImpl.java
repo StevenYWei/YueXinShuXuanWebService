@@ -12,28 +12,42 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
 	@Autowired
 	ShoppingCartDAO shoppingCartDAO;
-	
+
 	@Override
-	public List<ShoppingCart> getShoppingCartById(Integer shoppingCartId) {
+	public ShoppingCart getShoppingCartById(Integer shoppingCartId) {		
 		return shoppingCartDAO.getShoppingCartById(shoppingCartId);
 	}
+	
+	@Override
+	public List<ShoppingCart> getShopingCartByUserId(Integer userId) {
+		return shoppingCartDAO.getShopingCartByUserId(userId);
+	}
 
 	@Override
-	public int addToCart(Integer shoppingCartId, Integer bookId) {
-		shoppingCartDAO.addToCart(shoppingCartId, bookId);
+	public int addToCart(ShoppingCart shoppingCart) {
+		shoppingCartDAO.addToCart(shoppingCart);
 		return 1;
 	}
 
 	@Override
-	public int updateItemStatus(Integer shoppingCartId, Integer bookId, String status) {
-		shoppingCartDAO.updateItemStatus(shoppingCartId, bookId, status);
+	public int updateItemStatus(Integer shoppingCartId, String status) {
+		shoppingCartDAO.updateItemStatus(shoppingCartId, status);
 		return 1;
 	}
 
 	@Override
-	public int removeItem(Integer shoppingCartId, Integer bookId) {
-		shoppingCartDAO.removeItem(shoppingCartId, bookId);
+	public int removeItemById(Integer shoppingCartId) {
+		shoppingCartDAO.removeItemById(shoppingCartId);
 		return 1;
 	}
+
+	@Override
+	public int removeByUserId(Integer userId) {
+		shoppingCartDAO.removeByUserId(userId);
+		return 1;
+	}
+
+	
+	
 
 }

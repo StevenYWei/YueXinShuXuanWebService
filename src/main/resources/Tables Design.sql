@@ -4,7 +4,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS book_category_cd_lk;
 CREATE TABLE book_category_cd_lk (
     category_cd varchar(30) primary key,
-    code_desc text
+    code_desc varchar(100)
 );
 
 -- Create book table
@@ -15,7 +15,7 @@ CREATE TABLE book (
     book_name varchar(100),
     book_time date,
     author varchar(30),
-    book_desc text,
+    book_desc varchar(1000),
     price double,
     pic blob,
     foreign key (category_cd)
@@ -41,7 +41,6 @@ CREATE TABLE users (
     user_pw varchar(50) not null,
     user_cd varchar(10),
     active_fl varchar(1),
-    shpn_cart_id int,
     first_nm varchar(30),
     middle_nm varchar(10),
     last_nm varchar(50),
@@ -65,16 +64,17 @@ CREATE TABLE users (
 -- Create shopping cart table
 DROP TABLE IF EXISTS shpn_cart;
 CREATE TABLE shpn_cart (
-    shpn_cart_id int,
+    shpn_cart_id int auto_increment primary key,
+    user_id int,
     book_id int,
+    count int,
     stts_cd varchar(15),
-    primary key (shpn_cart_id , book_id),
-    foreign key (shpn_cart_id)
+    foreign key (user_id)
         references users (user_id)
         on update cascade,
     foreign key (book_id)
         references book (book_id)
-		on update cascade
+        on update cascade
 );
 
 

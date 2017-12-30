@@ -13,19 +13,25 @@ import javax.persistence.Table;
 @Table(name = "shpn_cart")
 public class ShoppingCart implements Serializable {
 
-	private static final long serialVersionUID = 1936208378726116700L;
+	private static final long serialVersionUID = -6951709795705816619L;
 
 	public ShoppingCart() {}
 
 	@Id
 	@Column(name = "shpn_cart_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer shoppingCartId;
 
-	@Id
+	@Column(name = "user_id", nullable = false)
+	private Integer userId;
+
 	@Column(name = "book_id", nullable = false)
 	private Integer bookId;
 
-	@Column(name = "stts_cd", nullable = false)
+	@Column(name = "count", nullable = true)
+	private String count;
+	
+	@Column(name = "stts_cd", nullable = true)
 	private String sttsCode;
 
 	public Integer getShoppingCartId() {
@@ -36,12 +42,28 @@ public class ShoppingCart implements Serializable {
 		this.shoppingCartId = shoppingCartId;
 	}
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	public Integer getBookId() {
 		return bookId;
 	}
 
 	public void setBookId(Integer bookId) {
 		this.bookId = bookId;
+	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
 	}
 
 	public String getSttsCode() {
@@ -51,17 +73,5 @@ public class ShoppingCart implements Serializable {
 	public void setSttsCode(String sttsCode) {
 		this.sttsCode = sttsCode;
 	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
-	
-	
 
 }

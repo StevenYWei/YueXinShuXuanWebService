@@ -35,9 +35,6 @@ public class User implements Serializable {
 	
 	@Column(name = "active_fl", nullable = true)
 	private String activeFlag;
-
-	@Column(name = "shpn_cart_id", nullable = true)
-	private Integer shoppingCartId;
 	
 	@Column(name = "first_nm", nullable = true)
 	private String firstName;
@@ -117,14 +114,6 @@ public class User implements Serializable {
 
 	public void setActiveFlag(String activeFlag) {
 		this.activeFlag = activeFlag;
-	}
-
-	public Integer getShoppingCartId() {
-		return shoppingCartId;
-	}
-
-	public void setShoppingCartId(int shoppingCartId) {
-		this.shoppingCartId = shoppingCartId;
 	}
 
 	public String getFirstName() {
@@ -230,11 +219,6 @@ public class User implements Serializable {
 	public void setCreateDate(Calendar createDate) {
 		this.createDate = createDate;
 	}
-
-	public void setShoppingCartId(Integer shoppingCartId) {
-		this.shoppingCartId = shoppingCartId;
-	}
-	
 	
 
 }
